@@ -17,3 +17,17 @@ exports.fetchNewsAsAsked = async(req, res) => {
     res.status(500).send("ISE");
   }
 }
+
+exports.fetchSearchedNews = async(req, res) => {
+  const apiKey = process.env.API_KEY.toString();
+  let apiURL = `https://newsapi.org/v2/top-headlines?apiKey=${apiKey}&pageSize=5&sortBy=popularity`;
+  if(req.query.page) apiURL = apiURL.concat(`&page=${req.query.page}`);
+  if(req.query.search) apiURL = apiURL.concat(`&q=${req.query.search}`);
+  try{
+    const data = await axios.get(apiURL);
+    res.status(200).json(data.data);
+  }catch(err){
+    console.log(err);
+    res.status(500).send("ISE");
+  }
+}
