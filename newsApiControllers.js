@@ -12,7 +12,7 @@ exports.fetchNewsAsAsked = async(req, res) => {
   if(req.body.page) apiURL = apiURL.concat(`&page=${req.body.page}`);
   try{
     const data = await axios.get(apiURL);
-    res.status(200).json(data.data);
+    res.status(200).json(data.data.articles);
   }catch(err){
     console.log(err);
     res.status(500).send("Internal Server Error");
@@ -26,7 +26,7 @@ exports.fetchSearchedNews = async(req, res) => {
   if(req.query.search) apiURL = apiURL.concat(`&q=${req.query.search}`);
   try{
     const data = await axios.get(apiURL);
-    res.status(200).json(data.data);
+    res.status(200).json(data.data.articles);
   }catch(err){
     console.log(err);
     res.status(500).send("Internal Server Error");

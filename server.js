@@ -11,6 +11,6 @@ app.use(bodyParser.json());
 app.post("/", newsApiController.fetchNewsAsAsked);
 app.get("/", newsApiController.fetchSearchedNews);
 
-app.listen(3000, () => {
+module.exports = app.listen(3000, () => {
   console.log("Server running on 3000");
 })
