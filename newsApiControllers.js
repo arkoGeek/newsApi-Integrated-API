@@ -1,6 +1,7 @@
 const dotenv = require("dotenv");
 dotenv.config();
 const axios = require("axios");
+const { request } = require("express");
 
 exports.fetchNewsAsAsked = async(req, res) => {
   const apiKey = process.env.API_KEY.toString();
@@ -14,7 +15,7 @@ exports.fetchNewsAsAsked = async(req, res) => {
     res.status(200).json(data.data);
   }catch(err){
     console.log(err);
-    res.status(500).send("ISE");
+    res.status(500).send("Internal Server Error");
   }
 }
 
@@ -28,6 +29,6 @@ exports.fetchSearchedNews = async(req, res) => {
     res.status(200).json(data.data);
   }catch(err){
     console.log(err);
-    res.status(500).send("ISE");
+    res.status(500).send("Internal Server Error");
   }
 }

@@ -15,3 +15,6 @@ fix/fix-name
 then raise a PR/MR to develop from feat/fix branch
 then raise a PR/MR to staging from develop
 and then staging to master
+
+
+master => hotfix/some-immediate-fix => master
